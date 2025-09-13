@@ -39,7 +39,7 @@ const Content = () => {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="border p-2 mr-2"
+            className="border bg-white p-2 mr-2"
           />
           <ButtonUsage text={"get Nasa Data"} onclick={getFetch} />
         </div>
@@ -60,7 +60,7 @@ const Content = () => {
                 className="w-full h-96 rounded"
               ></iframe>
             )}
-            <h2 className="flex justify-center text-xl font-semibold text-[#0b3d91] m-4">
+            <h2 className="flex justify-center text-xl font-semibold text-[#fe0000] m-4">
               {data.title}
             </h2>
             <h3 className="mt-2 font-semibold text-[#ffffff]">
