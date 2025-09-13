@@ -14,6 +14,13 @@ const Content = () => {
   const [date, setDate] = useState<string>("");
   const [data, setData] = useState<NasaData | null>(null);
 
+  const today = new Date()
+  const milliseconds = Number(today.getTime())
+  const chosenDate = new Date(date)
+  const chosenDateMilli = Number(chosenDate.getTime())
+
+  const warning = milliseconds < chosenDateMilli && (<p className="flex justify-center text-lg text-red-500 m-2">Please Select a date from the past</p>)
+
   const getFetch = async () => {
     try {
       const url = `https://api.nasa.gov/planetary/apod?api_key=1LUwIRcAlbjUSdQM9Belc5vOhNR3lOsqEJZH2rWX&date=${date}`;
@@ -25,8 +32,6 @@ const Content = () => {
       console.error("error", err);
     }
   };
-
-  console.log(data);
 
   return (
     <div className="flex flex-col">
@@ -43,6 +48,7 @@ const Content = () => {
           />
           <ButtonUsage text={"get Nasa Data"} onclick={getFetch} />
         </div>
+          {warning}
         {data && (
           <div className=" mt-4">
             {data.media_type === "image" ? (
